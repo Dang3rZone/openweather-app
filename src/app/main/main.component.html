@@ -1,22 +1,44 @@
-<h2>Mis ciudades preferidas</h2>
-<ul>
-  <li *ngFor="let city of cities">
-    <button (click)="onCitySelected(city)">{{ city }}</button>
-    <button (click)="removeCity(city)">X</button>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card weather-card">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h2>Detalles del tiempo</h2>
+          </div>
+          <div class="col-md-12" *ngIf="selectedCity">
+            <h3>{{ selectedCity }}</h3>
+            <p>Temperatura: {{ weather?.main?.temp }} °C</p>
+            <img
+              *ngIf="weather"
+              [src]="
+                'https://openweathermap.org/img/wn/' +
+                weather.weather[0].icon +
+                '.png'
+              "
+              alt="icon"
+            />
+            <p>Descripción: {{ weather?.weather[0]?.description }}</p>
+          </div>
+          <div class="col-md-12" *ngIf="!selectedCity">
+            <p>Selecciona una ciudad para ver el tiempo</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<h2>Detalles del tiempo</h2>
-<div *ngIf="selectedCity">
-  <h3>{{ selectedCity }}</h3>
-  <p>Temperatura: {{ weather?.main?.temp }} °C</p>
-  <img
-    *ngIf="weather"
-    [src]="
-      'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'
-    "
-    alt="icon"
-  />
-  <p>Descripción: {{ weather?.weather[0]?.description }}</p>
-  <!-- Aquí podrías incluir un mapa de Google Maps mostrando la ciudad -->
+    <div class="col-md-8">
+      <h2>Mis ciudades preferidas</h2>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let city of cities">
+          <button class="btn btn-link" (click)="onCitySelected(city)">
+            {{ city }}
+          </button>
+          <button class="btn btn-link" (click)="removeCity(city)">
+            <i class="bi bi-x"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
