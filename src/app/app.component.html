@@ -1,1 +1,5 @@
-<app-login></app-login>
+<div *ngIf="authService.isLoggedIn()">
+  <app-main></app-main>
+</div>
+
+<app-login *ngIf="!authService.isLoggedIn()"></app-login>
