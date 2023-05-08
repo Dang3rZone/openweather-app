@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   public user!: string;
   public password!: string;
+  public errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -17,7 +18,7 @@ export class LoginComponent {
     if (this.authService.login(this.user, this.password)) {
       this.router.navigate(['/main']);
     } else {
-      // Mostrar mensaje de error
+      this.errorMessage = 'Invalid username or password';
     }
   }
 }

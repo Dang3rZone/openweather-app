@@ -1,11 +1,23 @@
 <form (ngSubmit)="onSubmit()">
   <label>
     Usuario:
-    <input type="text" [(ngModel)]="user" name="user" required />
+    <input
+      type="text"
+      [(ngModel)]="user"
+      name="user"
+      placeholder="usuario1"
+      required
+    />
   </label>
   <label>
     Contraseña:
-    <input type="password" [(ngModel)]="password" name="password" required />
+    <input
+      type="password"
+      placeholder="123456"
+      [(ngModel)]="password"
+      name="password"
+      required
+    />
   </label>
   <button type="submit">Iniciar sesión</button>
 </form>
