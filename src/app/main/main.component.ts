@@ -6,6 +6,7 @@ import cities from '../cities/cities.json';
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
+  providers: [WeatherService],
 })
 export class MainComponent {
   public cities: string[] = cities;
@@ -29,5 +30,10 @@ export class MainComponent {
       this.selectedCity = null;
       this.weather = null;
     }
+  }
+
+  // Public getter method to access the private weatherService property
+  public getWeatherService() {
+    return this.weatherService;
   }
 }

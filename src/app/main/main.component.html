@@ -6,9 +6,11 @@
           <div class="col-md-12">
             <h2>Detalles del tiempo</h2>
           </div>
-          <div class="col-md-12" *ngIf="selectedCity">
+          <div class="col-md-12" *ngIf="selectedCity !== null">
             <h3>{{ selectedCity }}</h3>
-            <p>Temperatura: {{ weather?.main?.temp }} °C</p>
+            <p>
+              Temperatura:<strong>{{ weather?.main?.temp }} °C</strong>
+            </p>
             <img
               *ngIf="weather"
               [src]="
@@ -18,9 +20,12 @@
               "
               alt="icon"
             />
-            <p>Descripción: {{ weather?.weather[0]?.description }}</p>
+            <p>
+              Descripción:
+              <strong>{{ weather?.weather[0]?.description }}</strong>
+            </p>
           </div>
-          <div class="col-md-12" *ngIf="!selectedCity">
+          <div class="col-md-12" *ngIf="selectedCity === null">
             <p>Selecciona una ciudad para ver el tiempo</p>
           </div>
         </div>
